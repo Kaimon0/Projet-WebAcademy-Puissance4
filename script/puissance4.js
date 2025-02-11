@@ -41,12 +41,12 @@ class Puissance4 {
     //methodes pieceColor
     this.colorArray;
 
-    this.round = document.getElementById("round");
+    this.round = document.querySelector("#round");
 
     this.winner = false;
 
     this.replay = false;
-    // this.replayBtn = document.getElementById("replayBtn")
+    // this.replayBtn = document.querySelector("#replayBtn")
     // this.replayBtn.style.display = "none";
 
     
@@ -212,12 +212,12 @@ class Puissance4 {
     console.log(lowestEmptyRow);
 
     // this.board[this.x][this.y] = "player" + this.currPlayer;
-    // this.tile = document.getElementById(this.x.toString() + "_" + this.y.toString());
+    // this.tile = document.querySelector(this.x.toString() + "_" + this.y.toString());
     // this.tile = this.newTile;
 
     this.board[lowestEmptyRow][this.y] = "player" + this.currPlayer;
     this.tileId = lowestEmptyRow.toString() + "_" + this.y.toString();
-    this.tile = document.getElementById(this.tileId);
+    this.tile = document.querySelector(this.tileId);
 
     // let roundP1;
     // let roundP2;
