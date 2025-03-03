@@ -49,54 +49,51 @@ class Puissance4 {
     // this.replayBtn = document.querySelector("#replayBtn")
     // this.replayBtn.style.display = "none";
 
-    
     // if(this.replay == true) {
     // console.log(this.replay)
     // }
-  
 
-    this.gridNbr = 0
+    this.gridNbr = 0;
   }
 
   createGrid() {
     //grid base
     // console.log(this.currPlayer);
     // console.log(this.startPlayer)
-    
+
     this.columns = this.caseY;
 
     this.rows = this.caseX;
 
     this.grid = document.createElement("div");
     this.grid.id = "grid_" + this.gridNbr;
-    this.grid.style.width = 6.6 * this.caseY + "rem";
-    this.grid.style.height = 6.6 * this.caseX + "rem";
-    this.grid.style.padding = "0.4rem";
+    this.grid.style.width = 5.3 * this.caseX + "rem";
+    this.grid.style.height = 5.3 * this.caseY + "rem";
+    this.grid.style.padding = "0.3rem 1rem";
     this.grid.style.borderRadius = "3%";
     this.grid.style.border = "solid 2px #DF7DD9";
     this.grid.style.boxShadow = " 3px 5px #DF7DD9";
     this.grid.style.display = "flex";
     this.grid.style.flexDirection = "column";
-    this.grid.style.flexWrap = "wrap";
+    this.grid.style.justifyContent = "center";
+    // this.grid.style.alignItems= "center";
+    // this.grid.style.gap = "0.3rem";
+
+    // this.grid.style.flexDirection = "column";
     document.body.appendChild(this.grid).lastChild;
     // console.log(this.grid.style.weight);
 
     this.board = [];
 
-    // for (this.i = 0; this.i < this.rows; this.i++) {
-    //     this.currColumns.push(this.columns);
-
-    //     // for (this.l = 0; this.l < this)
-    // }
-
     console.log("curr: " + this.currColumns);
 
-    for (this.r = 0; this.r < this.rows; this.r++) {
+    for (this.r = 0; this.r < this.rows ; this.r++) {
       this.row = [];
       // this.columnsContainer = document.createElement("div");
       this.rowsContainer = document.createElement("div");
       this.rowsContainer.style.display = "flex";
-      this.rowsContainer.style.flexDirection = "row";
+
+      // this.rowsContainer.style.flexDirection = "column";
 
       for (this.c = 0; this.c < this.columns; this.c++) {
         this.row.push(" ");
@@ -114,8 +111,8 @@ class Puissance4 {
           //   this.setPieces();
           //   console.log(this.replay)
           // }
-            this.setPieces();
-            
+          this.setPieces();
+
           // this.animation();
         });
 
@@ -149,8 +146,8 @@ class Puissance4 {
     this.classTile.forEach((tile) => {
       tile.style.backgroundColor = "#FFF5D1";
       tile.style.boxShadow = "2px 5px #DF7DD9";
-      tile.style.width = "5.8rem";
-      tile.style.height = "5.8rem";
+      tile.style.width = "5rem";
+      tile.style.height = "5rem";
       tile.style.margin = "0.3rem";
       tile.style.borderRadius = "50%";
       tile.style.border = "1px solid #DF7DD9";
@@ -159,10 +156,10 @@ class Puissance4 {
       });
     });
 
-    this.setStartPlayer()
+    this.setStartPlayer();
   }
 
-  setStartPlayer(){
+  setStartPlayer() {
     this.startPlayer = Math.floor(Math.random() * (3 - 1) + 1);
 
     if (this.startPlayer == this.player1) {
@@ -177,8 +174,6 @@ class Puissance4 {
   }
 
   setPieces() {
-   
-
     if (this.gameOver) {
       return;
     }
@@ -217,8 +212,7 @@ class Puissance4 {
 
     this.board[lowestEmptyRow][this.y] = "player" + this.currPlayer;
     this.tileId = lowestEmptyRow.toString() + "_" + this.y.toString();
-    this.tile = document.querySelector(this.tileId);
-
+    this.tile = document.getElementById(this.tileId);
     // let roundP1;
     // let roundP2;
 
@@ -374,7 +368,6 @@ class Puissance4 {
   }
 
   replayGame() {
-   
     //fond quand le bouton apparait
     let bgReplay = document.createElement("div");
     bgReplay.style.width = "100%";
@@ -383,78 +376,71 @@ class Puissance4 {
     bgReplay.style.position = "absolute";
     document.body.appendChild(bgReplay);
 
-     //creation du bouton replay
-     let replayBtnContainer = document.createElement("div");
-     replayBtnContainer.id = "replayBtnContainer";
-     replayBtnContainer.style.backgroundColor = "#F3CFF1"
-     replayBtnContainer.style.position = "absolute";
-     replayBtnContainer.style.borderRadius = "50%";
-     replayBtnContainer.style.border = "solid";
-     replayBtnContainer.style.borderColor = "#DF7DD9";
-     replayBtnContainer.style.borderWidth = "2px";
-     replayBtnContainer.style.width = "160px";
-     replayBtnContainer.style.height = "160px";
-     replayBtnContainer.style.display = "flex";
-     replayBtnContainer.style.alignItems="center";
-     replayBtnContainer.style.justifyContent="center";
-     replayBtnContainer.style.top="40%";
-     replayBtnContainer.style.cursor="pointer";
-     document.body.appendChild(replayBtnContainer);
-    
- 
-     let replayBtn = document.createElement("i");
-     replayBtn.id = "replayBtn";
-     replayBtn.classList.add("fa-solid");
-     replayBtn.classList.add("fa-arrow-rotate-left");
-     replayBtn.classList.add("fa-7x");
-     replayBtn.style.color="#FFF5D1";
-     replayBtnContainer.appendChild(replayBtn);
- 
+    //creation du bouton replay
+    let replayBtnContainer = document.createElement("div");
+    replayBtnContainer.id = "replayBtnContainer";
+    replayBtnContainer.style.backgroundColor = "#F3CFF1";
+    replayBtnContainer.style.position = "absolute";
+    replayBtnContainer.style.borderRadius = "50%";
+    replayBtnContainer.style.border = "solid";
+    replayBtnContainer.style.borderColor = "#DF7DD9";
+    replayBtnContainer.style.borderWidth = "2px";
+    replayBtnContainer.style.width = "160px";
+    replayBtnContainer.style.height = "160px";
+    replayBtnContainer.style.display = "flex";
+    replayBtnContainer.style.alignItems = "center";
+    replayBtnContainer.style.justifyContent = "center";
+    replayBtnContainer.style.top = "40%";
+    replayBtnContainer.style.cursor = "pointer";
+    document.body.appendChild(replayBtnContainer);
 
-     let replayText = document.createElement("h2");
-     replayText.innerText = "Rejouer";
-     replayText.style.position = "absolute";
-     replayText.style.top="58%";
-     replayText.style.color="#FFF5D1";
-     replayText.style.fontSize="40px";
-     document.body.appendChild(replayText);
+    let replayBtn = document.createElement("i");
+    replayBtn.id = "replayBtn";
+    replayBtn.classList.add("fa-solid");
+    replayBtn.classList.add("fa-arrow-rotate-left");
+    replayBtn.classList.add("fa-7x");
+    replayBtn.style.color = "#FFF5D1";
+    replayBtnContainer.appendChild(replayBtn);
 
-     
-     replayBtnContainer.addEventListener("click", ()=>{
-       
-        bgReplay.remove();
-        replayBtn.remove();
-        replayBtnContainer.remove();
-        replayText.remove();
-       this.replay = true;
-       this.deleteGame();
-     });
+    let replayText = document.createElement("h2");
+    replayText.innerText = "Rejouer";
+    replayText.style.position = "absolute";
+    replayText.style.top = "58%";
+    replayText.style.color = "#FFF5D1";
+    replayText.style.fontSize = "40px";
+    document.body.appendChild(replayText);
+
+    replayBtnContainer.addEventListener("click", () => {
+      bgReplay.remove();
+      replayBtn.remove();
+      replayBtnContainer.remove();
+      replayText.remove();
+      this.replay = true;
+      this.deleteGame();
+    });
     //  replayBtnContainer.addEventListener("mouseout", ()=>{
-        
+
     //     replayBtnContainer.style.boxShadow = "10px 5px #DF7DD9";
     //     });
-
   }
 
   deleteGame() {
-    if(this.replay == true) {
+    if (this.replay == true) {
       // this.createGrid = null;
       // delete Puissance4();
 
       this.gridNbr++;
       // console.log(`grid_${ this.gridNbr-1}`);
-      if(this.grid.id==`grid_${ this.gridNbr-1}`) {
+      if (this.grid.id == `grid_${this.gridNbr - 1}`) {
         this.grid.remove();
         this.createGrid();
         this.rePlay = false;
         this.winner = false;
       }
-   
-   
+
       // if(this.)
       // this.grid.id = "grid_" + this.gridNbr;
     }
- 
   }
 }
 
